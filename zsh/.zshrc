@@ -96,7 +96,11 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
   --disturl=https://npm.taobao.org/dist \
   --userconfig=$HOME/.cnpmrc"
 
+alias sshvps="ssh root@138.128.213.222 -p29447"
 export HOMEBREW_BOTTLE_DOMAIN=http://7xkcej.dl1.z0.glb.clouddn.com
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 plugins=(git zsh-autosuggestions)
 prompt_context () { }
+alias lzd='lazydocker'
+alias sshtunnel="ssh -N -f -L 9443:138.128.213.222:988 root@172.30.44.36"
+

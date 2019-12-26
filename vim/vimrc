@@ -1,0 +1,128 @@
+set nocompatible              " 去除VI一致性,必须
+filetype off                  " 必须
+set ruler
+set number
+set background=dark
+syntax on
+colorscheme solarized
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:termguicolors=0
+
+" 设置包括vundle和初始化相关的runtime path
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" 另一种选择, 指定一个vundle安装插件的路径
+"call vundle#begin('~/some/path/here')
+
+" 让vundle管理插件版本,必须
+Plugin 'VundleVim/Vundle.vim'
+
+" 以下范例用来支持不同格式的插件安装.
+" 请将安装插件的命令放在vundle#begin和vundle#end之间.
+" Github上的插件
+" 格式为 Plugin '用户名/插件仓库名'
+Plugin 'tpope/vim-fugitive'
+" 来自 http://vim-scripts.org/vim/scripts.html 的插件
+" Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
+Plugin 'L9'
+" 由Git支持但不再github上的插件仓库 Plugin 'git clone 后面的地址'
+Plugin 'git://git.wincent.com/command-t.git'
+" 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
+Plugin 'file:///home/gmarik/path/to/plugin'
+" 插件在仓库的子目录中.
+" 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" 安装目录树nerdtree
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+" 你的所有插件需要在下面这行之前
+call vundle#end()            " 必须
+filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
+" 忽视插件改变缩进,可以使用以下替代:
+"filetype plugin on
+"
+" 简要帮助文档
+" :PluginList       - 列出所有已配置的插件
+" :PluginInstall    - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
+" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
+" :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
+"
+" 查阅 :h vundle 获取更多细节和wiki以及FAQ
+" 将你自己对非插件片段放在这行之后
+
+" 关闭NERDTree快捷键
+map <leader>t :NERDTreeToggle<CR>
+" 当NERDTree为剩下的唯一窗口时自动关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" 修改树的显示图标
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
+let NERDTreeAutoCenter=1
+" 显示行号
+let NERDTreeShowLineNumbers=1
+" 是否显示隐藏文件
+let NERDTreeShowHidden=0
+" 设置宽度
+let NERDTreeWinSize=45
+" 在终端启动vim时，共享NERDTree
+let g:nerdtree_tabs_open_on_console_startup=1
+""打开vim时自动打开NERDTree
+autocmd vimenter * NERDTree
+""打开vim时如果没有文件自动打开NERDTree
+autocmd vimenter * if !argc()|NERDTree|endif
+""窗口位置
+let g:NERDTreeWinPos='left'
+" 忽略一下文件的显示
+let NERDTreeIgnore=['\.pyc','\~$','\.swp']
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+"" solarized"" solarized"" solarized
+" Backspace deletes like most programs in insert mode
+set backspace=2
+" Show the cursor position all the time
+set ruler
+" Display incomplete commands
+set showcmd
+" Set fileencodings
+set fileencodings=utf-8,bg18030,gbk,big5
+
+filetype plugin indent on
+
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·
+
+" Make it obvious where 80 characters is
+" set textwidth=80
+" set colorcolumn=+1
+
+" Numbers
+set number
+set numberwidth=5
+
+set matchpairs+=<:>
+set hlsearch
+" Highlight current line
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
