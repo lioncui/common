@@ -1,9 +1,64 @@
+noremap u 8k
+noremap n 8j
+noremap H 6h
+noremap L 6l
+
+map s <nop>
+map S :w<CR>
+map cl :set splitright<CR>:vsplit<CR>
+map cj :set splitbelow<CR>:split<CR>
+map tc :tabe<CR>
+map tn :+tabnext<CR>
+map tu :-tabnext<CR>
+
+
 set nocompatible              " 去除VI一致性,必须
 filetype off                  " 必须
-set ruler
-set number
 set background=dark
+" tab 4空格
+set tabstop=4
 syntax on
+" Backspace deletes like most programs in insert mode
+set backspace=2
+" Show the cursor position all the time
+set ruler
+" Display incomplete commands
+set showcmd
+" Set fileencodings
+set fileencodings=utf-8,bg18030,gbk,big5
+
+filetype plugin indent on
+
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·
+
+" Make it obvious where 80 characters is
+" set textwidth=80
+" set colorcolumn=+1
+
+" Numbers
+set number
+set numberwidth=5
+
+set matchpairs+=<:>
+set hlsearch
+set ignorecase
+set smartcase
+
+" Highlight current line
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
+set wrap
+set wildmenu
+
+"" solarized"" solarized"" solarized
 colorscheme solarized
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
@@ -29,7 +84,7 @@ Plugin 'L9'
 " 由Git支持但不再github上的插件仓库 Plugin 'git clone 后面的地址'
 Plugin 'git://git.wincent.com/command-t.git'
 " 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
-Plugin 'file:///home/gmarik/path/to/plugin'
+" Plugin 'file:///home/gmarik/path/to/plugin'
 " 插件在仓库的子目录中.
 " 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -91,38 +146,3 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
-"" solarized"" solarized"" solarized
-" Backspace deletes like most programs in insert mode
-set backspace=2
-" Show the cursor position all the time
-set ruler
-" Display incomplete commands
-set showcmd
-" Set fileencodings
-set fileencodings=utf-8,bg18030,gbk,big5
-
-filetype plugin indent on
-
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
-
-" Display extra whitespace
-set list listchars=tab:»·,trail:·
-
-" Make it obvious where 80 characters is
-" set textwidth=80
-" set colorcolumn=+1
-
-" Numbers
-set number
-set numberwidth=5
-
-set matchpairs+=<:>
-set hlsearch
-" Highlight current line
-au WinLeave * set nocursorline nocursorcolumn
-au WinEnter * set cursorline cursorcolumn
-set cursorline cursorcolumn
