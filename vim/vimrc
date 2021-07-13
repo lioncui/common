@@ -128,8 +128,10 @@ call vundle#end()            " 必须
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 " 将你自己对非插件片段放在这行之后
 
-" 关闭NERDTree快捷键
+" 关闭/打开NERDTree
 map tt :NERDTreeToggle<CR>
+" 快速定位当前活动文件位置
+map xx :NERDTreeFind<CR>
 nmap <Leader>r :NERDTreeRefreshRoot
 " 当NERDTree为剩下的唯一窗口时自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -189,4 +191,5 @@ let g:Lf_RgConfig = [
     \ "--max-columns=150",
     \ "--glob=!dist/*",
     \ ]
+
 
